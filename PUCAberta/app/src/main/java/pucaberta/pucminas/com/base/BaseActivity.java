@@ -115,6 +115,18 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
         startActivity(intent);
     }
 
+
+    @Override
+    public void openActivityNewTaskAnimation(Class<?> openActivity, int in, int out) {
+        Intent intent = new Intent();
+        intent.setClass(this, openActivity);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        overridePendingTransition(in, out);
+        startActivity(intent);
+    }
+
+
+
     //
 //    @Override
 //    public MaterialDialog getBasicMaterialDialog() {

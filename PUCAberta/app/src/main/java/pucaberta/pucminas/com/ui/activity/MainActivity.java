@@ -1,8 +1,9 @@
-package pucaberta.pucminas.com;
+package pucaberta.pucminas.com.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import pucaberta.pucminas.com.R;
 import pucaberta.pucminas.com.service.RetrofitBase;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
