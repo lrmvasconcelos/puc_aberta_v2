@@ -9,4 +9,12 @@ public class Constants {
     public class SharedPreferences {
         public static final String PATH = "puc_path";
     }
+
+    public class API{
+        public static final String INSCRITO = "inscrito/";
+        public static final String GETSTATUS = "getstatus/";
+        public static final String GETDADOS = "getdados/";
+        public static final String GETPALESTRAS = "getpalestras/";
+        public static final String GETCURSOS = "getcursos/";
+    }
 }

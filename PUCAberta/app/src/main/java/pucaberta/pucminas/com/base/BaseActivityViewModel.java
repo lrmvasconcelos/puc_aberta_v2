@@ -1,8 +1,8 @@
-package pucaberta.pucminas.com.ui.activity.base;
+package pucaberta.pucminas.com.base;
 
 import android.databinding.ViewDataBinding;
 
-import pucaberta.pucminas.com.viewmodel.base.ViewModel;
+import pucaberta.pucminas.com.interfaces.ViewModel;
 
 /**
  * Created by lucas on 02/03/2018.

@@ -1,4 +1,4 @@
-package pucaberta.pucminas.com.viewmodel.base;
+package pucaberta.pucminas.com.base;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
+import pucaberta.pucminas.com.interfaces.ViewModel;
 
 
 /**

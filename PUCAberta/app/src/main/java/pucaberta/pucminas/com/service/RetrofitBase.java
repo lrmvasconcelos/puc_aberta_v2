@@ -114,7 +114,7 @@ public class RetrofitBase {
         Gson gson = gsonBuilder.create();
         GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(gson);
 
-        addAuthorizationHeaders(builder);
+//        addAuthorizationHeaders(builder);
 
         String urlBase = BuildConfig.BASE_URL;
 

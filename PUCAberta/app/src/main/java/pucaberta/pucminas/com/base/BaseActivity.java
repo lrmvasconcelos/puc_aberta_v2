@@ -1,4 +1,4 @@
-package pucaberta.pucminas.com.ui.activity.base;
+package pucaberta.pucminas.com.base;
 
 import android.app.DialogFragment;
 import android.content.Intent;
