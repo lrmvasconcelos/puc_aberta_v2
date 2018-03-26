@@ -22,7 +22,7 @@ public class SplashActivity extends BaseActivity {
 
     private void checkIn(){
         finish();
-        openActivityNewTask(MainActivity.class);
+        openActivityNewTask(LoginActivity.class);
 
     }
 }
