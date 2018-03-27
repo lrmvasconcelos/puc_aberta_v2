@@ -69,12 +69,15 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
 //        }
     }
 
-    public void setUpToolbar() {
+    public void setUpToolbar(boolean isBack) {
         toolbar = findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             assert getSupportActionBar() != null;
             getSupportActionBar().setTitle(R.string.login);
+            if(isBack){
+                toolbar.findViewById(R.id.imageView_back).setOnClickListener(v -> finish());
+            }
         }
     }
 

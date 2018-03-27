@@ -16,6 +16,6 @@ public class LoginActivity extends BaseActivityViewModel<ActivityLoginBinding, L
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         mViewModel = new LoginViewModel(this);
         mBinding.setViewModel(mViewModel);
-        setUpToolbar();
+        setUpToolbar(false);
     }
 }

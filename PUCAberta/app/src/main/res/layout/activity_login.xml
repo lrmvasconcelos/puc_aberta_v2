@@ -85,7 +85,7 @@
                     android:textColorHint="@color/black_38"
                     app:mask="@{DataMask.insert(edtBirthDay)}"
                     app:maxToday="@{true}"
-                    app:underlineColor="@{@color/black_87}"/>
+                    app:underlineColor="@{@color/colorPrimaryDark}"/>
 
                 <Button
                     android:layout_width="match_parent"
@@ -103,6 +103,7 @@
                     android:layout_marginEnd="@dimen/margin_40"
                     android:layout_marginStart="@dimen/margin_40"
                     android:layout_marginTop="@dimen/margin_10"
+                    android:onClick="@{() -> viewModel.callRegister()}"
                     android:background="@drawable/btn_white_stroke"
                     android:text="@string/registrar"
                     android:textColor="@color/colorPrimaryDark"/>

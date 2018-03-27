@@ -6,4 +6,8 @@
     <string name="cpf">\t\tCPF</string>
     <string name="data_nascimento">\t\tData Nascimento</string>
     <string name="registrar">Registrar</string>
+    <string name="registro">Registro</string>
+    <string name="header_registrar">Escolha o tipo de registro</string>
+    <string name="individual">Individual</string>
+    <string name="escola">Escola</string>
 </resources>
