@@ -2,6 +2,7 @@ package pucaberta.pucminas.com.helper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -291,6 +292,16 @@ public class Utils {
             }
         }
 
+        return null;
+    }
+
+    public static Activity getActivityFromContext(Context context) {
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity) context;
+            }
+            context = ((ContextWrapper) context).getBaseContext();
+        }
         return null;
     }
 

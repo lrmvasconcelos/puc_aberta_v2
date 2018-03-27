@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
+        <import type="pucaberta.pucminas.com.helper.DataMask"/>
+
+        <import type="pucaberta.pucminas.com.helper.CPFCNPJMask"/>
+
         <variable
             name="viewModel"
             type="pucaberta.pucminas.com.viewmodel.LoginViewModel"/>
@@ -32,13 +39,77 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_gravity="center"
-            android:layout_width="@dimen/margin_100"
-            android:layout_height="@dimen/margin_100"
-            android:src="@mipmap/ic_puc_aberta_2018"/>
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="@dimen/margin_120"
+                    android:layout_height="@dimen/margin_120"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_puc_aberta_2018"/>
+
+                <EditText
+                    android:id="@+id/edtCpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_20"
+                    android:layout_marginRight="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:cursorVisible="false"
+                    android:hint="@string/cpf"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/black_38"
+                    app:mask="@{CPFCNPJMask.insert(edtCpf)}"/>
+
+                <pucaberta.pucminas.com.custom.CustomDatePicker
+                    android:id="@+id/edtBirthDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_20"
+                    android:cursorVisible="false"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/data_nascimento"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="@color/black_38"
+                    app:mask="@{DataMask.insert(edtBirthDay)}"
+                    app:maxToday="@{true}"
+                    app:underlineColor="@{@color/black_87}"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_40"
+                    android:layout_marginStart="@dimen/margin_40"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@drawable/btn_blue"
+                    android:text="@string/login"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_40"
+                    android:layout_marginStart="@dimen/margin_40"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@drawable/btn_white_stroke"
+                    android:text="@string/registrar"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
 
     </LinearLayout>
 </layout>

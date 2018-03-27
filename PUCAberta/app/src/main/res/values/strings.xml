@@ -3,4 +3,7 @@
     <string name="ok">Ok</string>
     <string name="loading">Carregando</string>
     <string name="login">Login</string>
+    <string name="cpf">\t\tCPF</string>
+    <string name="data_nascimento">\t\tData Nascimento</string>
+    <string name="registrar">Registrar</string>
 </resources>
