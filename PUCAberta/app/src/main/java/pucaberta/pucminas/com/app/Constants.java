@@ -16,5 +16,10 @@ public class Constants {
         public static final String GETDADOS = "getdados/";
         public static final String GETPALESTRAS = "getpalestras/";
         public static final String GETCURSOS = "getcursos/";
+
+        public class Register{
+            public static final String INDIVIDUAL = "http://portal.pucminas.br/pucaberta/inscrito_cadastro.php";
+            public static final String ESCOLA = "http://portal.pucminas.br/pucaberta/escola/escola_cadastro.php";
+        }
     }
 }
