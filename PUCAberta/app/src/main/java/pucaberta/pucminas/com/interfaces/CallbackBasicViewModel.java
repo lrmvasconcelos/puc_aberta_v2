@@ -25,6 +25,8 @@ public interface CallbackBasicViewModel {
 
     void openActivityNewTask(Class<?> openActivity);
 
+    void openActivity(Class<?> openActivity, Bundle bundle);
+
     void openActivityNewTaskAnimation(Class<?> openActivity, int in, int out);
 
     MaterialDialog getBasicMaterialDialog();

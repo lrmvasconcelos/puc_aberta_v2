@@ -73,6 +73,7 @@
                 android:layout_marginTop="@dimen/margin_20"
                 android:background="@drawable/btn_blue"
                 android:text="@string/individual"
+                android:onClick="@{() -> viewModel.individual()}"
                 android:textColor="@android:color/white"/>
 
             <Button
@@ -81,6 +82,7 @@
                 android:layout_margin="@dimen/margin_20"
                 android:background="@drawable/btn_white_stroke"
                 android:text="@string/escola"
+                android:onClick="@{() -> viewModel.escola()}"
                 android:textColor="@color/colorPrimaryDark"/>
         </LinearLayout>
     </LinearLayout>

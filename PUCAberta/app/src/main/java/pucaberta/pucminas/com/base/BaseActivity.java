@@ -17,6 +17,8 @@ import pucaberta.pucminas.com.R;
 import pucaberta.pucminas.com.helper.Utils;
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
 
+import static pucaberta.pucminas.com.app.Constants.BUNDLE_EXTRA;
+
 /**
  * Created by lucas on 02/03/2018.
  * Update at 02/03/2018
@@ -111,6 +113,14 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
         Intent intent = new Intent();
         intent.setClass(this, openActivity);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openActivity(Class<?> openActivity, Bundle bundle) {
+        Intent intent = new Intent();
+        intent.setClass(this, openActivity);
+        intent.putExtra(BUNDLE_EXTRA, bundle);
         startActivity(intent);
     }
 

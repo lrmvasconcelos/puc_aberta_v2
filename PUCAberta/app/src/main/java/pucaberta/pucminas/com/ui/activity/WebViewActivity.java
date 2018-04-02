@@ -21,5 +21,6 @@ public class WebViewActivity extends BaseActivityViewModel<ActivityWebViewBindin
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_web_view);
         mViewModel = new WebViewModel(this);
         mBinding.setViewModel(mViewModel);
+        setUpToolbar(true);
     }
 }

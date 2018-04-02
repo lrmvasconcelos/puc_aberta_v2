@@ -1,5 +1,6 @@
 package pucaberta.pucminas.com.base;
 
+import android.content.Intent;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.os.Bundle;
@@ -50,6 +51,10 @@ public class BaseViewModel implements ViewModel {
 
     protected void openActivity(Class<?> open) {
         if (callback != null) callback.openActivity(open);
+    }
+
+    public void openActivity(Class<?> openActivity, Bundle bundle) {
+        if (callback != null) callback.openActivity(openActivity, bundle);
     }
 
     protected void openActivityNewTask(Class<?> open) {
