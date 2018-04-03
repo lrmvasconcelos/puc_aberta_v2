@@ -14,10 +14,11 @@ import com.afollestad.materialdialogs.MaterialDialog;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import pucaberta.pucminas.com.R;
+import pucaberta.pucminas.com.app.Constants;
 import pucaberta.pucminas.com.helper.Utils;
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
 
-import static pucaberta.pucminas.com.app.Constants.BUNDLE_EXTRA;
+import static pucaberta.pucminas.com.app.Constants.API.Register.REGISTER;
 
 /**
  * Created by lucas on 02/03/2018.
@@ -120,7 +121,7 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
     public void openActivity(Class<?> openActivity, Bundle bundle) {
         Intent intent = new Intent();
         intent.setClass(this, openActivity);
-        intent.putExtra(BUNDLE_EXTRA, bundle);
+        intent.putExtra(REGISTER, bundle);
         startActivity(intent);
     }
 

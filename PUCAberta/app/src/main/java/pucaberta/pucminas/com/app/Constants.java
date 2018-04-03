@@ -19,12 +19,9 @@ public class Constants {
 
         public class Register{
             public static final String REGISTER = "register";
-            public static final String ROTA_INDIVIDUAL = "http://portal.pucminas.br/pucaberta/inscrito_cadastro.php";
-            public static final String ROTA_ESCOLA = "http://portal.pucminas.br/pucaberta/escola/escola_cadastro.php";
-            public static final String INDIVIDUAL = "individual";
-            public static final String ESCOLA = "escola";
+            public static final String INDIVIDUAL = "http://portal.pucminas.br/pucaberta/inscrito_cadastro.php";
+            public static final String ESCOLA = "http://portal.pucminas.br/pucaberta/escola/escola_cadastro.php";
         }
     }
-    public static final String BUNDLE_EXTRA = "bundle_extra";
 
 }

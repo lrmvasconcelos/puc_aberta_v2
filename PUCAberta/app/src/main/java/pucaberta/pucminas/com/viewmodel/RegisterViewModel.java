@@ -5,6 +5,7 @@ import android.os.Bundle;
 import pucaberta.pucminas.com.R;
 import pucaberta.pucminas.com.app.PucApp;
 import pucaberta.pucminas.com.base.BaseViewModel;
+import pucaberta.pucminas.com.helper.PreferencesManager;
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
 import pucaberta.pucminas.com.ui.activity.WebViewActivity;
 
@@ -28,14 +29,12 @@ public class RegisterViewModel extends BaseViewModel {
 
 
     public void individual(){
-        Bundle bundle = new Bundle();
-        bundle.putCharSequence(REGISTER, INDIVIDUAL);
-        openActivity(WebViewActivity.class, bundle);
+        PreferencesManager.getInstance().setValue(REGISTER, INDIVIDUAL);
+        openActivity(WebViewActivity.class);
     }
 
     public void escola(){
-        Bundle bundle = new Bundle();
-        bundle.putCharSequence(REGISTER, ESCOLA);
-        openActivity(WebViewActivity.class, bundle);
+        PreferencesManager.getInstance().setValue(REGISTER, ESCOLA);
+        openActivity(WebViewActivity.class);
     }
 }

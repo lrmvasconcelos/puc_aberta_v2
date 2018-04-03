@@ -3,6 +3,8 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="pucaberta.pucminas.com">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".app.PucApp"
         android:allowBackup="true"
