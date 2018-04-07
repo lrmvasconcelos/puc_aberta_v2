@@ -1,6 +1,7 @@
 package pucaberta.pucminas.com.viewmodel;
 
 import android.databinding.ObservableField;
+import android.text.TextUtils;
 
 import pucaberta.pucminas.com.R;
 import pucaberta.pucminas.com.app.PucApp;
@@ -28,24 +29,41 @@ public class LoginViewModel extends BaseViewModel {
 
     public LoginViewModel(CallbackBasicViewModel callback) {
         super(callback);
-        cpf.set("49095387801");
 
         titleTextToolbar.set(PucApp.getInstance().getString(R.string.login));
     }
 
-    public void login(){
-        RetrofitBase.getInterfaceRetrofit()
-                .login(CPFCNPJMask.unmask(cpf.get()), Utils.formatDataToApi(birthday.get()))
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(inscritoResponse -> {
-                    inscritoResponse.toString();
-                }, error -> {
-                    error.getCause();
-                });
+    public void login() {
+
+        if (checkInput()) {
+            showProgress();
+            RetrofitBase.getInterfaceRetrofit()
+                    .login(CPFCNPJMask.unmask(cpf.get()), Utils.formatDataToApi(birthday.get()))
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(inscritoResponse -> {
+                        hideProgress();
+                        if(!TextUtils.isEmpty(inscritoResponse.getInscrito().getNome())){
+
+                        }else {
+                            showSimpleDialog("Oops", "Usuário não cadastrado.");
+                        }
+                    }, error -> {
+                        hideProgress();
+                        showError(error, (dialog, which) -> dialog.dismiss());
+                    });
+        }
     }
 
-    public void callRegister(){
+    public void callRegister() {
         openActivity(RegisterActivity.class);
+    }
+
+    private boolean checkInput() {
+        if (TextUtils.isEmpty(cpf.get()) || TextUtils.isEmpty(birthday.get())) {
+            showSimpleDialog("Oops", "Todos os campos devem ser preenchidos");
+            return false;
+        }
+        return true;
     }
 }

@@ -48,6 +48,7 @@ public class CustomDatePicker extends AppCompatEditText implements View.OnClickL
     }
     @Override
     public void onClick(View v) {
+        setText("");
         showDialogValues();
     }
     public void showDialogValues() {

@@ -17,10 +17,10 @@ public class InscritoResponse {
     private Inscrito inscrito;
     @SerializedName("palestras")
     @Expose
-    private Palestra palestras = null;
+    private List<Palestra> palestras = null;
     @SerializedName("cursos")
     @Expose
-    private Curso cursos = null;
+    private List<Curso> cursos = null;
 
     public Inscrito getInscrito() {
         return inscrito;
@@ -30,19 +30,19 @@ public class InscritoResponse {
         this.inscrito = inscrito;
     }
 
-    public Palestra getPalestras() {
+    public List<Palestra> getPalestras() {
         return palestras;
     }
 
-    public void setPalestras(Palestra palestras) {
+    public void setPalestras(List<Palestra> palestras) {
         this.palestras = palestras;
     }
 
-    public Curso getCursos() {
+    public List<Curso> getCursos() {
         return cursos;
     }
 
-    public void setCursos(Curso cursos) {
+    public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
     }
 

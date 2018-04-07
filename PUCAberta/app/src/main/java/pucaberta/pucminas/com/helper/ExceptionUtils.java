@@ -3,8 +3,10 @@ package pucaberta.pucminas.com.helper;
 import android.content.Context;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.gson.JsonSyntaxException;
 
 import pucaberta.pucminas.com.R;
+import retrofit2.HttpException;
 
 
 /**
@@ -38,13 +40,17 @@ public class ExceptionUtils {
     }
 
     private void getMensagemThrowable() {
-//        String msgError = mContext.getString(R.string.connection_failure);
-        String msgError = "";
-        String titleError = "Unknow";
+        String msgError = mContext.getString(R.string.connection_failure);
+        String titleError = "Oops!";
 
-//        if (mThrowable instanceof HttpException) {
-//            msgError = mContext.getString(R.string.connection_failure);
-//        } else if (mThrowable instanceof UserNotFoundException) {
+        if (mThrowable instanceof HttpException) {
+            if(((HttpException) mThrowable).code() == 404) {
+                msgError = mContext.getString(R.string.user_not_found);
+            }
+        }else if (mThrowable instanceof JsonSyntaxException){
+            msgError = mContext.getString(R.string.user_not_found);
+        }
+// else if (mThrowable instanceof UserNotFoundException) {
 //            titleError = mContext.getString(R.string.connection_failure);
 //            msgError = ((UserNotFoundException) mThrowable).getErrorMessage();
 //        } else if (mThrowable instanceof NotAuthorizedException) {

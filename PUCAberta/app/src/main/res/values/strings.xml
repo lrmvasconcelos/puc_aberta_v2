@@ -10,4 +10,8 @@
     <string name="header_registrar">Escolha o tipo de registro</string>
     <string name="individual">Individual</string>
     <string name="escola">Escola</string>
+
+
+    <string name="connection_failure">Verifique sua conexão e tente novamente.</string>
+    <string name="user_not_found">Usuário não cadastrado.</string>
 </resources>
