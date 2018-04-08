@@ -24,10 +24,10 @@ public class Inscrito {
     private String serie;
     @SerializedName("cnpj")
     @Expose
-    private Object cnpj;
+    private String cnpj;
     @SerializedName("escola")
     @Expose
-    private Object escola;
+    private String escola;
 
     public String getNome() {
         return nome;
@@ -61,19 +61,19 @@ public class Inscrito {
         this.serie = serie;
     }
 
-    public Object getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(Object cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 
-    public Object getEscola() {
+    public String getEscola() {
         return escola;
     }
 
-    public void setEscola(Object escola) {
+    public void setEscola(String escola) {
         this.escola = escola;
     }
 

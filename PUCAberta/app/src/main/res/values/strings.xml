@@ -15,7 +15,8 @@
     <string name="connection_failure">Verifique sua conexão e tente novamente.</string>
     <string name="user_not_found">Usuário não cadastrado.</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_map">Mapa</string>
+    <string name="title_courses">Cursos</string>
+    <string name="title_programming">Programação</string>
+    <string name="title_menu">Menu</string>
 </resources>

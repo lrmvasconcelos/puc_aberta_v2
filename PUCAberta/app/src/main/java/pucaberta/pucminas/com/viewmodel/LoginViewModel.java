@@ -45,12 +45,15 @@ public class LoginViewModel extends BaseViewModel {
                     .subscribe(inscritoResponse -> {
                         hideProgress();
                         if(!TextUtils.isEmpty(inscritoResponse.getInscrito().getNome())){
+                            PucApp.getInstance().setIsLogged(true);
+                            PucApp.getInstance().setUser(inscritoResponse.getInscrito());
                             openActivityNewTask(HomeActivity.class);
                         }else {
                             showSimpleDialog("Oops", "Usuário não cadastrado.");
                         }
                     }, error -> {
                         hideProgress();
+                        PucApp.getInstance().setIsLogged(false);
                         showError(error, (dialog, which) -> dialog.dismiss());
                     });
         }
