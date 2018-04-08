@@ -6,6 +6,9 @@ package pucaberta.pucminas.com.app;
  */
 
 public class Constants {
+
+    public static final String ISLOGGED = "logged";
+
     public class SharedPreferences {
         public static final String PATH = "puc_path";
     }
@@ -22,6 +25,15 @@ public class Constants {
             public static final String INDIVIDUAL = "http://portal.pucminas.br/pucaberta/inscrito_cadastro.php";
             public static final String ESCOLA = "http://portal.pucminas.br/pucaberta/escola/escola_cadastro.php";
         }
+    }
+
+    public class USER{
+        public static final String NOME = "nome";
+        public static final String CPF = "cpf";
+        public static final String NASC = "nasc";
+        public static final String SERIE = "serie";
+        public static final String CNPJ = "cnpj";
+        public static final String ESCOLA = "escola";
     }
 
 }

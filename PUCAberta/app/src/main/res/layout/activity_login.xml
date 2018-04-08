@@ -66,6 +66,7 @@
                     android:layout_marginTop="@dimen/margin_20"
                     android:cursorVisible="false"
                     android:hint="@string/cpf"
+                    android:text="@={viewModel.cpf}"
                     android:inputType="number"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
@@ -80,6 +81,7 @@
                     android:cursorVisible="false"
                     android:focusableInTouchMode="true"
                     android:hint="@string/data_nascimento"
+                    android:text="@={viewModel.birthday}"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
                     android:textColorHint="@color/black_38"
@@ -93,6 +95,7 @@
                     android:layout_marginEnd="@dimen/margin_40"
                     android:layout_marginStart="@dimen/margin_40"
                     android:layout_marginTop="@dimen/margin_10"
+                    android:onClick="@{() -> viewModel.login()}"
                     android:background="@drawable/btn_blue"
                     android:text="@string/login"
                     android:textColor="@android:color/white"/>

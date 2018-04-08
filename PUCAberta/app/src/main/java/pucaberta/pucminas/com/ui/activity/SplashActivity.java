@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import pucaberta.pucminas.com.R;
+import pucaberta.pucminas.com.app.PucApp;
 import pucaberta.pucminas.com.base.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
@@ -22,7 +23,9 @@ public class SplashActivity extends BaseActivity {
 
     private void checkIn(){
         finish();
-        openActivityNewTask(LoginActivity.class);
+        if(PucApp.getInstance().getIsLogged())openActivityNewTask(HomeActivity.class);
+        else openActivityNewTask(LoginActivity.class);
+
 
     }
 }
