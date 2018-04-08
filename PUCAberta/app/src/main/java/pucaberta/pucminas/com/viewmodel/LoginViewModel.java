@@ -11,6 +11,7 @@ import pucaberta.pucminas.com.helper.ErrorObservable;
 import pucaberta.pucminas.com.helper.Utils;
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
 import pucaberta.pucminas.com.service.RetrofitBase;
+import pucaberta.pucminas.com.ui.activity.HomeActivity;
 import pucaberta.pucminas.com.ui.activity.RegisterActivity;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -44,7 +45,7 @@ public class LoginViewModel extends BaseViewModel {
                     .subscribe(inscritoResponse -> {
                         hideProgress();
                         if(!TextUtils.isEmpty(inscritoResponse.getInscrito().getNome())){
-
+                            openActivityNewTask(HomeActivity.class);
                         }else {
                             showSimpleDialog("Oops", "Usuário não cadastrado.");
                         }

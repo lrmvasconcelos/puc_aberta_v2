@@ -78,6 +78,7 @@ dependencies {
     /**
      * Group adapter
      */
+    implementation 'com.android.support:design:26.1.0'
     compile 'com.genius:groupie:0.8.0'
 
     /**
