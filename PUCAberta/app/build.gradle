@@ -106,10 +106,19 @@ dependencies {
      */
     implementation 'io.reactivex:rxjava:1.2.7'
     implementation 'io.reactivex:rxandroid:1.2.1'
+    compile('com.tbruyelle.rxpermissions:rxpermissions:0.9.3@aar') {
+        exclude group: 'io.reactivex', module: 'rxjava:1.2.1'
+    }
     /**
      * Parceler
      */
     implementation 'org.parceler:parceler:1.1.6'
     annotationProcessor 'org.parceler:parceler:1.1.6'
+
+    /**
+     * Dexter permission
+     */
+    implementation 'com.karumi:dexter:4.2.0'
+
 
 }

@@ -12,9 +12,10 @@ import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import java.util.Stack;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import pucaberta.pucminas.com.R;
-import pucaberta.pucminas.com.app.Constants;
 import pucaberta.pucminas.com.helper.Utils;
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
 
@@ -27,6 +28,7 @@ import static pucaberta.pucminas.com.app.Constants.API.Register.REGISTER;
 
 public class BaseActivity extends AppCompatActivity implements CallbackBasicViewModel {
     protected Toolbar toolbar;
+    protected Stack mStack = new Stack<Fragment>();
     private SweetAlertDialog dialogProgress;
 
     @Override
@@ -59,8 +61,20 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
     public void changeFragment(View view, Fragment fragment) {
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
         fragmentTransaction.replace(view.getId(), fragment);
-        fragmentTransaction.commitNowAllowingStateLoss();
+        fragmentTransaction.commit();
+    }
+
+    public void changeFragmentAddStack(View view, Fragment fragment) {
+        removeFragment();
+        mStack.push(fragment);
+        changeFragment(view, fragment);
+    }
+
+    public void removeFragment() {
+        if (getSupportFragmentManager().findFragmentById(R.id.container) != null)
+            getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.container)).commitAllowingStateLoss();
     }
 
     public void setLogoToolbar() {
@@ -78,7 +92,7 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
             setSupportActionBar(toolbar);
             assert getSupportActionBar() != null;
             getSupportActionBar().setTitle(R.string.login);
-            if(isBack){
+            if (isBack) {
                 toolbar.findViewById(R.id.imageView_back).setOnClickListener(v -> finish());
             }
         }
@@ -134,7 +148,6 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
         overridePendingTransition(in, out);
         startActivity(intent);
     }
-
 
 
     //
@@ -199,6 +212,7 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
     public void hideDialogProgress() {
         if (dialogProgress != null && dialogProgress.isShowing()) dialogProgress.dismiss();
     }
+
     //
     @Override
     public void showError(Throwable t, MaterialDialog.SingleButtonCallback callback) {
