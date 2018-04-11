@@ -8,6 +8,7 @@ import android.widget.TextView;
 import pucaberta.pucminas.com.R;
 import pucaberta.pucminas.com.base.BaseActivityViewModel;
 import pucaberta.pucminas.com.databinding.ActivityHomeBinding;
+import pucaberta.pucminas.com.ui.fragment.CursosFragment;
 import pucaberta.pucminas.com.ui.fragment.MapsFragment;
 import pucaberta.pucminas.com.ui.fragment.MenuFragment;
 import pucaberta.pucminas.com.viewmodel.HomeViewModel;
@@ -26,7 +27,12 @@ public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, Hom
                 return true;
             case R.id.navigation_programming:
                 return true;
+            case R.id.navigation_my_programming:
+                return true;
             case R.id.navigation_courses:
+                if(!(mStack.peek() instanceof CursosFragment)){
+                    changeFragmentAddStack(mBinding.container, CursosFragment.newInstance());
+                }
                 return true;
             case R.id.navigation_menu:
                 if(!(mStack.peek() instanceof MenuFragment )){

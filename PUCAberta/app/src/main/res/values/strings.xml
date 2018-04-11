@@ -18,6 +18,12 @@
     <string name="title_map">Mapa</string>
     <string name="title_courses">Cursos</string>
     <string name="title_programming">Programação</string>
+    <string name="title_my_programming">Minha Programação</string>
     <string name="title_menu">Menu</string>
     <string name="cantinas">Cantinas</string>
+
+    <string name="fragment_cursos_txt_1">Você está off-line.</string>
+    <string name="fragment_cursos_txt_2">Verifique sua conexão com a internet e tente novamente</string>
+    <string name="sem_conexao_internet">Não foi possível carregar página. Verifique sua conexão com a internet</string>
+    <string name="conexao_internet_habilitada">Carregando página de cursos ...</string>
 </resources>

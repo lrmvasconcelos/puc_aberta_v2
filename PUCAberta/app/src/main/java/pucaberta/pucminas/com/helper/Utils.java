@@ -33,6 +33,7 @@ import java.util.Calendar;
 
 import okhttp3.ResponseBody;
 import pucaberta.pucminas.com.R;
+import pucaberta.pucminas.com.app.PucApp;
 import rx.functions.Action1;
 
 /**
@@ -409,4 +410,24 @@ public class Utils {
 //            return Observable.error(e);
 //        }
 //    }
+
+    public static boolean isOnline()
+    {
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) PucApp.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+
+        if (mConnectivityManager.getActiveNetworkInfo() != null
+                && mConnectivityManager.getActiveNetworkInfo().isAvailable()
+                && mConnectivityManager.getActiveNetworkInfo().isConnected()) {
+
+            return true;
+
+        }
+        else
+        {
+
+            return false;
+
+        }
+    }
 }

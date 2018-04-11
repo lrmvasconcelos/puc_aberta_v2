@@ -12,9 +12,15 @@
         android:title="@string/title_programming"/>
 
     <item
+        android:id="@+id/navigation_my_programming"
+        android:icon="@drawable/ic_event_available_white_24dp"
+        android:title="@string/title_my_programming"/>
+
+    <item
         android:id="@+id/navigation_courses"
         android:icon="@drawable/ic_school_white_24dp"
         android:title="@string/title_courses"/>
+
 
 
     <item
