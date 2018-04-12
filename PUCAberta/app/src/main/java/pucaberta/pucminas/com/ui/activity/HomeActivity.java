@@ -11,6 +11,7 @@ import pucaberta.pucminas.com.databinding.ActivityHomeBinding;
 import pucaberta.pucminas.com.ui.fragment.CursosFragment;
 import pucaberta.pucminas.com.ui.fragment.MapsFragment;
 import pucaberta.pucminas.com.ui.fragment.MenuFragment;
+import pucaberta.pucminas.com.ui.fragment.ProgramacaoFragment;
 import pucaberta.pucminas.com.viewmodel.HomeViewModel;
 
 public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, HomeViewModel> {
@@ -26,6 +27,9 @@ public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, Hom
                 }
                 return true;
             case R.id.navigation_programming:
+                if(!(mStack.peek() instanceof ProgramacaoFragment)){
+                    changeFragmentAddStack(mBinding.container, ProgramacaoFragment.newInstance());
+                }
                 return true;
             case R.id.navigation_my_programming:
                 return true;
