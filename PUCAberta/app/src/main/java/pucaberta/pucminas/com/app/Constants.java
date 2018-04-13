@@ -17,7 +17,7 @@ public class Constants {
         public static final String INSCRITO = "inscrito/";
         public static final String GETSTATUS = "getstatus/";
         public static final String GETDADOS = "getdados/";
-        public static final String GETPALESTRAS = "getpalestras/";
+        public static final String GETPALESTRAS = "inscrito/getpalestras/";
         public static final String GETCURSOS = "getcursos/";
 
         public class Register{
