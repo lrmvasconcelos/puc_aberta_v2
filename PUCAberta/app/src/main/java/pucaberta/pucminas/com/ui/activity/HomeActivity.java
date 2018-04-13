@@ -22,24 +22,24 @@ public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, Hom
             = item -> {
         switch (item.getItemId()) {
             case R.id.navigation_map:
-                if(!(mStack.peek() instanceof MapsFragment )){
+                if (!(mStack.peek() instanceof MapsFragment)) {
                     changeFragmentAddStack(mBinding.container, MapsFragment.newInstance());
                 }
                 return true;
             case R.id.navigation_programming:
-                if(!(mStack.peek() instanceof ProgramacaoFragment)){
+                if (!(mStack.peek() instanceof ProgramacaoFragment)) {
                     changeFragmentAddStack(mBinding.container, ProgramacaoFragment.newInstance());
                 }
                 return true;
             case R.id.navigation_my_programming:
                 return true;
             case R.id.navigation_courses:
-                if(!(mStack.peek() instanceof CursosFragment)){
+                if (!(mStack.peek() instanceof CursosFragment)) {
                     changeFragmentAddStack(mBinding.container, CursosFragment.newInstance());
                 }
                 return true;
             case R.id.navigation_menu:
-                if(!(mStack.peek() instanceof MenuFragment )){
+                if (!(mStack.peek() instanceof MenuFragment)) {
                     changeFragmentAddStack(mBinding.container, MenuFragment.newInstance());
                 }
                 return true;
@@ -53,10 +53,10 @@ public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, Hom
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         mViewModel = new HomeViewModel(this);
         mBinding.setViewModel(mViewModel);
+        setLogoToolbar();
         mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         changeFragmentAddStack(mBinding.container, MapsFragment.newInstance());
     }
-
 
 
 }

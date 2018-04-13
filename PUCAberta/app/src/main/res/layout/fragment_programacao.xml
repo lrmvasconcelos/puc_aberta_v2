@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/margin_5"
-            android:elevation="@dimen/margin_5"
-            android:layout_marginBottom="@dimen/margin_5"
+            android:elevation="@dimen/margin_10"
+            android:background="@color/colorPrimary"
             android:orientation="vertical">
 
             <TextView
@@ -28,7 +28,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="PROGRAMAÇÃO PUC ABERTA"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/white"/>
 
             <TextView
@@ -37,7 +36,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="5dp"
                 android:text="FEIRA DE CURSOS - 13h30 às 18h00"
-                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
                 android:textColor="@android:color/white"/>
 
         </LinearLayout>

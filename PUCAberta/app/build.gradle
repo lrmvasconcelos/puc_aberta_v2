@@ -36,17 +36,17 @@ android {
             minSdkVersion 18
             versionCode 4
             versionName "1.0.3"
-            resValue "string", "app_name", "PUC ABerta"
+            resValue "string", "app_name", "PUC Aberta"
             buildConfigField "String", "BASE_URL", "\"http://portal.pucminas.br/pucaberta/api/\""
         }
         dev {
             dimension "app"
-            applicationId "pucaberta.pucminas.com.dev"
+            applicationId "pucaberta.pucminas.com"
             // esse flavor é somente para deixar o build mais rapido quando desenvolvendo
             minSdkVersion 22
             versionCode 10001
             versionName "0.0.1-dev"
-            resValue "string", "app_name", "PUC ABerta dev."
+            resValue "string", "app_name", "PUC Aberta dev."
             buildConfigField "String", "BASE_URL", "\"http://portal.pucminas.br/pucaberta/api/\""
         }
     }

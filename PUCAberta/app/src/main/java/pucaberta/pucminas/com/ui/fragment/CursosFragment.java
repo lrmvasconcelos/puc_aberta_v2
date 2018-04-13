@@ -2,6 +2,7 @@ package pucaberta.pucminas.com.ui.fragment;
 
 import android.annotation.SuppressLint;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -59,14 +60,21 @@ public class CursosFragment extends BaseFragmentViewModel<FragmentCursosBinding,
 
             mBinding.webView.setVisibility(View.VISIBLE);
 
-            mBinding.webView.setWebChromeClient(new WebChromeClient() {
-                public void onProgressChanged(WebView view, int progress) {
-
-                    showDialogProgress();
-                }
-            });
 
             mBinding.webView.setWebViewClient(new WebViewClient() {
+
+                @Override
+                public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                    super.onPageStarted(view, url, favicon);
+                    showDialogProgress();
+                }
+
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+                    hideDialogProgress();
+                }
+
                 public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                     Toast.makeText(getContext(), "Oops! " + description, Toast.LENGTH_SHORT).show();
                 }
