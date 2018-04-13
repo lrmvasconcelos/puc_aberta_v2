@@ -6,9 +6,11 @@ import android.support.annotation.ColorInt;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.Calendar;
 
+import pucaberta.pucminas.com.app.PucApp;
 import pucaberta.pucminas.com.custom.CustomDatePicker;
 
 /**
@@ -50,5 +52,10 @@ public class DataBinder {
         editText.addTextChangedListener(textWatcher);
 
 
+    }
+
+    @BindingAdapter({"setIcon"})
+    public static void setIcon(ImageView imageView, Integer resource) {
+        imageView.setImageDrawable(PucApp.getInstance().getDrawable(resource));
     }
 }
