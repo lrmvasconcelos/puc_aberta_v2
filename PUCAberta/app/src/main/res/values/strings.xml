@@ -11,6 +11,7 @@
     <string name="individual">Individual</string>
     <string name="escola">Escola</string>
     <string name="log_out">Log Out</string>
+    <string name="twitter">Twitter</string>
 
     <string name="connection_failure">Verifique sua conexão e tente novamente.</string>
     <string name="user_not_found">Usuário não cadastrado.</string>
@@ -26,4 +27,8 @@
     <string name="fragment_cursos_txt_2">Verifique sua conexão com a internet e tente novamente</string>
     <string name="sem_conexao_internet">Não foi possível carregar página. Verifique sua conexão com a internet</string>
     <string name="conexao_internet_habilitada">Carregando página de cursos ...</string>
+
+    <string name="sobre">
+        "Aplicativo PUC Aberta \nversão 2.0 \n\nEquipe:\nLucas Rafael Madeira Vasconcelos \nAluno do Ciência da Computação - Coração Eucarístico \n\nProf. Felipe Domingos da Cunha \ne\n Prof. Max do Val Machado \n\nProfessores do Departamento de Ciência da Computação - ICEI"
+    </string>
 </resources>

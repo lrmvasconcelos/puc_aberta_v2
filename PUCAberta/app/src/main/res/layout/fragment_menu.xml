@@ -1,17 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="pucaberta.pucminas.com.viewmodel.MenuViewModel"/>
+    </data>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/margin_120"
+            android:layout_height="@dimen/margin_120"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/margin_20"
+            android:src="@mipmap/ic_puc_aberta_2018"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_below="@+id/image"
+            android:text="@string/sobre"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
         <Button
+            android:id="@+id/twitter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/log_out"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_margin="@dimen/margin_20"
+            android:background="@drawable/btn_blue"
+            android:text="@string/twitter"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:id="@+id/log_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/twitter"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/twitter"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/btn_white_stroke"
             android:text="@string/log_out"
             android:textColor="@color/colorPrimaryDark"/>
