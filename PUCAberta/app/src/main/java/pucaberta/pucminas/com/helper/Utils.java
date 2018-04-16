@@ -133,6 +133,11 @@ public class Utils {
         return temp[2]+"-"+temp[1]+"-"+temp[0];
     }
 
+    public static String formatDataToShow(String data){
+        String[] temp = data.split("-");
+        return temp[2]+"/"+temp[1];
+    }
+
     public static String getStringToInputStream(InputStream inputStream) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String line = null;

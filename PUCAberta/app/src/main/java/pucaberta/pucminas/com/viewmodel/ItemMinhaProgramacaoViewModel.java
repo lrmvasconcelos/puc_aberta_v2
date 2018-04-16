@@ -3,6 +3,7 @@ package pucaberta.pucminas.com.viewmodel;
 import android.databinding.ObservableField;
 
 import pucaberta.pucminas.com.base.BaseViewModel;
+import pucaberta.pucminas.com.helper.Utils;
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
 import pucaberta.pucminas.com.model.response.Palestra;
 
@@ -23,8 +24,24 @@ public class ItemMinhaProgramacaoViewModel extends BaseViewModel {
         super(callback);
         this.palestra.set(palestra);
         palestraHead.set(palestra.getPalestra());
-        data.set(palestra.getPalestraData());
+        formatData(palestra.getPalestraData());
         unidade.set(palestra.getUnidade());
         espaco.set(palestra.getPalestraEspaco());
+    }
+
+    private void formatData(String inputData){
+        String[] tempData = inputData.split(" ");
+
+        String data = Utils.formatDataToShow(tempData[0]);
+        String time = tempData[1];
+
+        this.data.set(data+" - "+formatTime(time));
+
+    }
+
+    private String formatTime(String inputTime){
+        String[] time = inputTime.split(":");
+
+        return time[0]+":"+time[1];
     }
 }
