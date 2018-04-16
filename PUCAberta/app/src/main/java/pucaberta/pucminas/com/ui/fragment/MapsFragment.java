@@ -1,13 +1,17 @@
 package pucaberta.pucminas.com.ui.fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,10 +21,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.tbruyelle.rxpermissions.RxPermissions;
 
 import pucaberta.pucminas.com.R;
 import pucaberta.pucminas.com.base.BaseFragmentViewModel;
 import pucaberta.pucminas.com.databinding.FragmentMapsBinding;
+import pucaberta.pucminas.com.helper.Utils;
 import pucaberta.pucminas.com.viewmodel.MapsFragmentViewModel;
 
 /**
@@ -45,6 +51,7 @@ public class MapsFragment extends BaseFragmentViewModel<FragmentMapsBinding, Map
 
         ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMapAsync(this);
 
+
         mBinding.switchCantina.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
@@ -55,6 +62,19 @@ public class MapsFragment extends BaseFragmentViewModel<FragmentMapsBinding, Map
         });
 
         return mBinding.getRoot();
+    }
+
+    private void checkPermission() {
+        RxPermissions rxPermissions = new RxPermissions(getActivity());
+        rxPermissions
+                .request(Manifest.permission.ACCESS_FINE_LOCATION)
+                .subscribe(granted -> {
+                    if (granted) {
+                        mMap.setMyLocationEnabled(true);
+                    } else {
+                        // At least one permission is denied
+                    }
+                });
     }
 
     @Override
@@ -78,6 +98,17 @@ public class MapsFragment extends BaseFragmentViewModel<FragmentMapsBinding, Map
                 .build();
 
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(mCameraPosition));
+
+        checkPermission();
+
+        mMap.setOnMyLocationButtonClickListener(() -> {
+
+            if (!Utils.isGPSEnabled()) {
+                Toast.makeText(getActivity(), "GPS está desabilitado, favor habilitar para que seja possível orientá-lo no campus", Toast.LENGTH_SHORT).show();
+            }
+
+            return false;
+        });
 
         addMarcadoresPrincipais();
 

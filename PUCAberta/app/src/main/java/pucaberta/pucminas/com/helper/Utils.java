@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -77,6 +78,15 @@ public class Utils {
         } else {
             return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
         }
+    }
+
+    public static boolean isGPSEnabled()
+    {
+        LocationManager locationManager = (LocationManager)PucApp.getInstance()
+                .getSystemService(Context.LOCATION_SERVICE);
+
+
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
     public static boolean isOnline(Context context) {
