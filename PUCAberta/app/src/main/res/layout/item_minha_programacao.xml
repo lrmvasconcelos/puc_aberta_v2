@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -25,18 +26,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center_horizontal"
-                android:text="@={viewModel.palestraHead}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/colorPrimary"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center_horizontal"
                 android:text="@={viewModel.data}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary"
+                tools:text="2018-05-09 13:30:00"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -44,8 +36,19 @@
                 android:layout_margin="5dp"
                 android:gravity="center_horizontal"
                 android:text="@={viewModel.unidade}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary"
+                tools:text="Coração Eucarístico"/>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center_horizontal"
+                android:text="@={viewModel.palestraHead}"
+                android:textColor="@color/colorPrimary"
+                tools:text="Grupo A - Engenharias"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -53,8 +56,22 @@
                 android:layout_margin="5dp"
                 android:gravity="center_horizontal"
                 android:text="@={viewModel.espaco}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary"
+                tools:text="Teatro"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C4CDE0"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/margin_10"
+                android:text="@string/ver_no_mapa"
+                android:textColor="@color/colorPrimaryDark"/>
 
         </LinearLayout>
 
