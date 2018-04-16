@@ -8,6 +8,7 @@ package pucaberta.pucminas.com.app;
 public class Constants {
 
     public static final String ISLOGGED = "logged";
+    public static final String COURSE = "course";
 
     public class SharedPreferences {
         public static final String PATH = "puc_path";

@@ -98,7 +98,7 @@
                 android:gravity="center_horizontal"
                 android:layout_below="@id/viewBotton"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-
+                android:onClick="@{() -> viewModel.loadMap()}"
                 android:text="@string/ver_no_mapa"
                 android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/textView6"/>

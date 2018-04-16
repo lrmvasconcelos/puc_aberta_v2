@@ -2,10 +2,14 @@ package pucaberta.pucminas.com.viewmodel;
 
 import android.databinding.ObservableField;
 
+import pucaberta.pucminas.com.app.PucApp;
 import pucaberta.pucminas.com.base.BaseViewModel;
 import pucaberta.pucminas.com.helper.Utils;
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
 import pucaberta.pucminas.com.model.response.Palestra;
+import pucaberta.pucminas.com.ui.activity.HomeActivity;
+
+import static pucaberta.pucminas.com.app.Constants.COURSE;
 
 /**
  * Created by lucas on 12/04/2018.
@@ -43,5 +47,10 @@ public class ItemMinhaProgramacaoViewModel extends BaseViewModel {
         String[] time = inputTime.split(":");
 
         return time[0]+":"+time[1];
+    }
+
+    public void loadMap(){
+        PucApp.prefs.setValue(COURSE, palestraHead.get());
+        openActivityNewTask(HomeActivity.class);
     }
 }
