@@ -41,6 +41,7 @@ public class MinhaProgramacaoViewModel extends BaseViewModel {
     }
 
     private void init(){
+        showProgress();
         RetrofitBase.getInterfaceRetrofit()
                 .getPalestras(CPFCNPJMask.unmask(PucApp.getInstance().getUser().getCpf()),
                         PucApp.getInstance().getUser().getNasc())

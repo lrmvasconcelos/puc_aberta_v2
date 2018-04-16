@@ -44,6 +44,7 @@
             android:name=".ui.activity.HomeActivity"
             android:label="@string/title_activity_home">
         </activity>
+        <activity android:name=".ui.activity.TwitterActivity"/>
     </application>
 
 </manifest>

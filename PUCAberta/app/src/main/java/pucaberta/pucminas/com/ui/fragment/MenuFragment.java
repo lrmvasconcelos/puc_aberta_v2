@@ -19,7 +19,7 @@ import pucaberta.pucminas.com.viewmodel.MenuViewModel;
  * Update at 09/04/2018
  */
 
-public class MenuFragment extends BaseFragmentViewModel<FragmentMenuBinding, MenuViewModel> implements View.OnClickListener{
+public class MenuFragment extends BaseFragmentViewModel<FragmentMenuBinding, MenuViewModel> {
 
     public static MenuFragment newInstance() {
 
@@ -33,18 +33,8 @@ public class MenuFragment extends BaseFragmentViewModel<FragmentMenuBinding, Men
         if(mViewModel == null){
             mViewModel = new MenuViewModel(this);
         }
+        mBinding.setViewModel(mViewModel);
         return mBinding.getRoot();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.log_out:
-
-                break;
-
-            default:
-                break;
-        }
-    }
 }

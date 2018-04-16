@@ -3,6 +3,7 @@ package pucaberta.pucminas.com.ui.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.widget.TextView;
 
 import pucaberta.pucminas.com.R;
@@ -62,5 +63,32 @@ public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, Hom
         changeFragmentAddStack(mBinding.container, MapsFragment.newInstance());
     }
 
+    @Override
+    public void onBackPressed() {
+
+        if (mStack.size() > 1) {
+            mStack.pop();
+            if (mStack.peek() instanceof MapsFragment) {
+                changeFragment(mBinding.container, (Fragment) mStack.peek());
+                mBinding.navigation.setSelectedItemId(R.id.navigation_map);
+            } else if(mStack.peek() instanceof ProgramacaoFragment){
+                changeFragment(mBinding.container, (Fragment) mStack.peek());
+                mBinding.navigation.setSelectedItemId(R.id.navigation_programming);
+            }else if(mStack.peek() instanceof MinhaProgramacaoFragment) {
+                changeFragment(mBinding.container, (Fragment) mStack.peek());
+                mBinding.navigation.setSelectedItemId(R.id.navigation_my_programming);
+            }else if(mStack.peek() instanceof CursosFragment) {
+                changeFragment(mBinding.container, (Fragment) mStack.peek());
+                mBinding.navigation.setSelectedItemId(R.id.navigation_courses);
+            }else if(mStack.peek() instanceof MenuFragment) {
+                changeFragment(mBinding.container, (Fragment) mStack.peek());
+                mBinding.navigation.setSelectedItemId(R.id.navigation_menu);
+            }
+
+        } else {
+            super.onBackPressed();
+        }
+
+    }
 
 }
