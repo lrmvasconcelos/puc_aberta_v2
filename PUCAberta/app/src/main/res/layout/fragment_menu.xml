@@ -10,54 +10,72 @@
     </data>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image"
-            android:layout_width="@dimen/margin_100"
-            android:layout_height="@dimen/margin_100"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_margin="@dimen/margin_20"
-            android:src="@mipmap/ic_puc_aberta_2018"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/image"
-            android:layout_centerInParent="true"
-            android:layout_margin="@dimen/activity_vertical_margin"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:gravity="center"
-            android:text="@string/sobre"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/colorPrimary"/>
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/twitter"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/margin_80"
+                android:layout_height="@dimen/margin_80"
+                android:layout_margin="@dimen/margin_10"
+                android:src="@mipmap/ic_puc_aberta_2018"/>
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/log_out"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/margin_20"
-            android:background="@drawable/btn_blue"
-            android:onClick="@{() -> viewModel.twitter()}"
-            android:text="@string/twitter"
-            android:textColor="@android:color/white"/>
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/log_out"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:gravity="center"
+                android:text="@string/sobre"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/twitter"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/twitter"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/btn_white_stroke"
-            android:onClick="@{() -> viewModel.logOut()}"
-            android:text="@string/log_out"
-            android:textColor="@color/colorPrimaryDark"/>
-    </RelativeLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <Button
+                android:id="@+id/twitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:background="@drawable/btn_blue"
+                android:onClick="@{() -> viewModel.twitter()}"
+                android:text="@string/twitter"
+                android:textColor="@android:color/white"/>
+
+            <Button
+                android:id="@+id/log_out"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginEnd="@dimen/margin_20"
+                android:background="@drawable/btn_white_stroke"
+                android:onClick="@{() -> viewModel.logOut()}"
+                android:text="@string/log_out"
+                android:textColor="@color/colorPrimaryDark"/>
+        </LinearLayout>
+    </LinearLayout>
 </layout>
