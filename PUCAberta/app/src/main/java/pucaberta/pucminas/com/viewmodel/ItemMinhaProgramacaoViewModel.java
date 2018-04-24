@@ -1,6 +1,8 @@
 package pucaberta.pucminas.com.viewmodel;
 
 import android.databinding.ObservableField;
+import android.net.Uri;
+import android.view.View;
 
 import pucaberta.pucminas.com.app.PucApp;
 import pucaberta.pucminas.com.base.BaseViewModel;
@@ -52,5 +54,9 @@ public class ItemMinhaProgramacaoViewModel extends BaseViewModel {
     public void loadMap(){
         PucApp.prefs.setValue(COURSE, palestraHead.get());
         openActivityNewTask(HomeActivity.class);
+    }
+
+    public void sendEmail(){
+        callMailIntent("");
     }
 }

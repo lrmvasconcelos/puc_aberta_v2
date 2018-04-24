@@ -63,6 +63,11 @@ public class BaseFragment extends Fragment implements CallbackBasicViewModel {
     }
 
     @Override
+    public void openMailIntent(String mailQuery) {
+
+    }
+
+    @Override
     public void openActivityNewTaskAnimation(Class<?> openActivity, int in, int out) {
 
     }

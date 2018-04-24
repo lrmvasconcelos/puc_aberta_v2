@@ -27,6 +27,8 @@ public interface CallbackBasicViewModel {
 
     void openActivity(Class<?> openActivity, Bundle bundle);
 
+    void openMailIntent(String mailQuery);
+
     void openActivityNewTaskAnimation(Class<?> openActivity, int in, int out);
 
     MaterialDialog getBasicMaterialDialog();

@@ -139,6 +139,11 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
         startActivity(intent);
     }
 
+    @Override
+    public void openMailIntent(String mailQuery) {
+
+    }
+
 
     @Override
     public void openActivityNewTaskAnimation(Class<?> openActivity, int in, int out) {

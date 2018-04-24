@@ -53,6 +53,10 @@ public class BaseViewModel implements ViewModel {
         if (callback != null) callback.openActivity(open);
     }
 
+    protected void callMailIntent(String mailQuery){
+        if(callback != null) callback.openMailIntent(mailQuery);
+    }
+
     public void openActivity(Class<?> openActivity, Bundle bundle) {
         if (callback != null) callback.openActivity(openActivity, bundle);
     }
