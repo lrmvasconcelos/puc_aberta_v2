@@ -57,6 +57,11 @@ public class ItemMinhaProgramacaoViewModel extends BaseViewModel {
     }
 
     public void sendEmail(){
-        callMailIntent("");
+
+        showSimpleDialog("Olá", "Deseja enviar sua dúvida por email?", (dialog, which) -> {
+            callMailIntent(palestraHead.get());
+        });
+
+
     }
 }

@@ -141,7 +141,11 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
 
     @Override
     public void openMailIntent(String mailQuery) {
-
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
 
@@ -184,6 +188,11 @@ public class BaseActivity extends AppCompatActivity implements CallbackBasicView
     public void showSimpleDialog(String title, String msg) {
         Utils.showSimpleDialog(this, title, msg, (dialog, which) -> {
         });
+    }
+
+    @Override
+    public void showSimpleDialog(String title, String msg, MaterialDialog.SingleButtonCallback callback) {
+        Utils.showSimpleDialog(this, title, msg, callback);
     }
 
     @Override

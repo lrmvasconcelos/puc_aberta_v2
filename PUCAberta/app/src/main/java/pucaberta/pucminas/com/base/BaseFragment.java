@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -64,6 +65,22 @@ public class BaseFragment extends Fragment implements CallbackBasicViewModel {
 
     @Override
     public void openMailIntent(String mailQuery) {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"pucaberta@pucminas.br"});
+        i.putExtra(Intent.EXTRA_SUBJECT, mailQuery);
+        try {
+            startActivity(Intent.createChooser(i, "Escolha seu serviço de email:"));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getActivity(), "Não foram encontrados serviços de email.", Toast.LENGTH_SHORT).show();
+        }
+//        Intent sendIntent = new Intent();
+//        sendIntent.setAction(Intent.ACTION_SEND);
+//        sendIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
+//                new String[] { "pucaberta@pucminas.br" });
+//        sendIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, mailQuery);
+//        sendIntent.setType("text/plain");
+//        startActivity(Intent.createChooser(sendIntent, "Escolha seu serviço de email:"));
 
     }
 
@@ -99,6 +116,11 @@ public class BaseFragment extends Fragment implements CallbackBasicViewModel {
     @Override
     public void showSimpleDialog(String title, String msg) {
 
+    }
+
+    @Override
+    public void showSimpleDialog(String title, String msg, MaterialDialog.SingleButtonCallback callback) {
+        Utils.showSimpleDialog(getActivity(), title, msg, callback);
     }
 
     @Override

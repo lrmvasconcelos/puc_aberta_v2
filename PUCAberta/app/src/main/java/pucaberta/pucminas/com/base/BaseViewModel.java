@@ -77,6 +77,10 @@ public class BaseViewModel implements ViewModel {
         if(callback != null) callback.showSimpleDialog(title, text);
     }
 
+    protected void  showSimpleDialog(String title, String text, MaterialDialog.SingleButtonCallback callback2) {
+        if(callback != null) callback.showSimpleDialog(title, text, callback2);
+    }
+
     @Override
     public void resume() {
 

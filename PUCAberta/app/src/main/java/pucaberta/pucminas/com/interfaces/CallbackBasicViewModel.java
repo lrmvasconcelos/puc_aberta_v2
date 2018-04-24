@@ -41,6 +41,8 @@ public interface CallbackBasicViewModel {
 
     void showSimpleDialog(String title, String msg);
 
+    void showSimpleDialog(String title, String msg, MaterialDialog.SingleButtonCallback callback);
+
     void showSimpleDialog(int title, int msg);
 
     String getString(int resString);
