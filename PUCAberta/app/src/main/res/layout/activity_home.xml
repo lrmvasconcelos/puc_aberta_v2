@@ -28,6 +28,15 @@
 
         </RelativeLayout>
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/brnCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"
+            android:layout_above="@+id/navigation"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_baseline_camera_alt_24px"/>
+
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="match_parent"

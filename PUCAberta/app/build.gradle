@@ -80,7 +80,7 @@ dependencies {
      * Group adapter
      */
     implementation 'com.android.support:design:26.1.0'
-    compile 'com.genius:groupie:0.8.0'
+    implementation 'com.genius:groupie:0.8.0'
 
     /**
      * Crashlytics
@@ -121,5 +121,9 @@ dependencies {
      */
     implementation 'com.karumi:dexter:4.2.0'
 
+    implementation 'com.camerakit:camerakit:1.0.0-beta3.10'
+    implementation 'com.camerakit:jpegkit:0.1.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
 
 }

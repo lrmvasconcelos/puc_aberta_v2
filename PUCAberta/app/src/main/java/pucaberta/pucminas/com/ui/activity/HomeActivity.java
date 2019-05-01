@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.tbruyelle.rxpermissions.RxPermissions;
 
 import pucaberta.pucminas.com.R;
 import pucaberta.pucminas.com.base.BaseActivityViewModel;
@@ -17,6 +20,8 @@ import pucaberta.pucminas.com.ui.fragment.MenuFragment;
 import pucaberta.pucminas.com.ui.fragment.MinhaProgramacaoFragment;
 import pucaberta.pucminas.com.ui.fragment.ProgramacaoFragment;
 import pucaberta.pucminas.com.viewmodel.HomeViewModel;
+
+import static android.Manifest.permission.CAMERA;
 
 public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, HomeViewModel> {
 
@@ -70,6 +75,13 @@ public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, Hom
         setLogoToolbar();
         mBinding.navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         changeFragmentAddStack(mBinding.container, MapsFragment.newInstance());
+        mBinding.brnCamera.setOnClickListener(view ->
+                new RxPermissions(HomeActivity.this)
+                        .request(CAMERA)
+                        .filter(allGranted -> allGranted)
+                        .subscribe(allGranted -> {
+                            openActivity(CameraActivity.class);
+                        }, error -> Toast.makeText(HomeActivity.this, "É necessário a permissão de acesso a câmera do dispositivo", Toast.LENGTH_SHORT).show()));
     }
 
     @Override
@@ -80,16 +92,16 @@ public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, Hom
             if (mStack.peek() instanceof MapsFragment) {
                 changeFragment(mBinding.container, (Fragment) mStack.peek());
                 mBinding.navigation.setSelectedItemId(R.id.navigation_map);
-            } else if(mStack.peek() instanceof ProgramacaoFragment){
+            } else if (mStack.peek() instanceof ProgramacaoFragment) {
                 changeFragment(mBinding.container, (Fragment) mStack.peek());
                 mBinding.navigation.setSelectedItemId(R.id.navigation_programming);
-            }else if(mStack.peek() instanceof MinhaProgramacaoFragment) {
+            } else if (mStack.peek() instanceof MinhaProgramacaoFragment) {
                 changeFragment(mBinding.container, (Fragment) mStack.peek());
                 mBinding.navigation.setSelectedItemId(R.id.navigation_my_programming);
-            }else if(mStack.peek() instanceof CursosFragment) {
+            } else if (mStack.peek() instanceof CursosFragment) {
                 changeFragment(mBinding.container, (Fragment) mStack.peek());
                 mBinding.navigation.setSelectedItemId(R.id.navigation_courses);
-            }else if(mStack.peek() instanceof MenuFragment) {
+            } else if (mStack.peek() instanceof MenuFragment) {
                 changeFragment(mBinding.container, (Fragment) mStack.peek());
                 mBinding.navigation.setSelectedItemId(R.id.navigation_menu);
             }
