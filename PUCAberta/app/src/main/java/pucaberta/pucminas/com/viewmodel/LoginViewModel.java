@@ -8,13 +8,17 @@ import pucaberta.pucminas.com.app.PucApp;
 import pucaberta.pucminas.com.base.BaseViewModel;
 import pucaberta.pucminas.com.helper.CPFCNPJMask;
 import pucaberta.pucminas.com.helper.ErrorObservable;
+import pucaberta.pucminas.com.helper.PreferencesManager;
 import pucaberta.pucminas.com.helper.Utils;
 import pucaberta.pucminas.com.interfaces.CallbackBasicViewModel;
 import pucaberta.pucminas.com.service.RetrofitBase;
 import pucaberta.pucminas.com.ui.activity.HomeActivity;
-import pucaberta.pucminas.com.ui.activity.RegisterActivity;
+import pucaberta.pucminas.com.ui.activity.WebViewActivity;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+
+import static pucaberta.pucminas.com.app.Constants.API.Register.INDIVIDUAL;
+import static pucaberta.pucminas.com.app.Constants.API.Register.REGISTER;
 
 /**
  * Created by lucas on 26/03/2018.
@@ -60,7 +64,8 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     public void callRegister() {
-        openActivity(RegisterActivity.class);
+        PreferencesManager.getInstance().setValue(REGISTER, INDIVIDUAL);
+        openActivity(WebViewActivity.class);
     }
 
     private boolean checkInput() {
