@@ -55,7 +55,7 @@
                     android:layout_width="@dimen/margin_120"
                     android:layout_height="@dimen/margin_120"
                     android:layout_gravity="center"
-                    android:src="@mipmap/ic_puc_aberta_2018"/>
+                    android:src="@mipmap/ic_launcher_round"/>
 
                 <EditText
                     android:id="@+id/edtCpf"

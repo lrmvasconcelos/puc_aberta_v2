@@ -1,6 +1,8 @@
 package pucaberta.pucminas.com.ui.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,7 @@ import pucaberta.pucminas.com.viewmodel.HomeViewModel;
 public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, HomeViewModel> {
 
     private TextView mTextMessage;
+    private int lastMenuSelected;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
@@ -39,9 +42,15 @@ public class HomeActivity extends BaseActivityViewModel<ActivityHomeBinding, Hom
                 }
                 return true;
             case R.id.navigation_courses:
-                if (!(mStack.peek() instanceof CursosFragment)) {
-                    changeFragmentAddStack(mBinding.container, CursosFragment.newInstance());
+                Uri uri = Uri.parse("https://www.pucminas.br/_layouts/15/cursos/graduacao.aspx?tipo=152f25a5-fa8d-4d04-a7ba-57b6b4c21265");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                if (intent.resolveActivity(this.getPackageManager()) == null) {
+                    intent.setData(Uri.parse("https://www.pucminas.br/_layouts/15/cursos/graduacao.aspx?tipo=152f25a5-fa8d-4d04-a7ba-57b6b4c21265"));
                 }
+                this.startActivity(intent);
+//                if (!(mStack.peek() instanceof CursosFragment)) {
+//                    changeFragmentAddStack(mBinding.container, CursosFragment.newInstance());
+//                }
                 return true;
             case R.id.navigation_menu:
                 if (!(mStack.peek() instanceof MenuFragment)) {

@@ -80,7 +80,7 @@ public class CursosFragment extends BaseFragmentViewModel<FragmentCursosBinding,
                 }
             });
 
-            mBinding.webView.loadUrl("http://www.pucminas.br/Graduacao/Paginas/default.aspx");
+            mBinding.webView.loadUrl("https://www.pucminas.br/_layouts/15/cursos/graduacao.aspx?tipo=152f25a5-fa8d-4d04-a7ba-57b6b4c21265");
         } else {
             Toast.makeText(getActivity(), R.string.sem_conexao_internet, Toast.LENGTH_SHORT).show();
             mBinding.webView.setVisibility(View.GONE);

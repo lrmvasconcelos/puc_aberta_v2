@@ -10,7 +10,7 @@
     <application
         android:name=".app.PucApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_puc_aberta_2018"
+        android:icon="@mipmap/ic_launcher_2019"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
