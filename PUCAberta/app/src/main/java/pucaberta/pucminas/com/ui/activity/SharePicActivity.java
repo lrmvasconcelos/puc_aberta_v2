@@ -147,7 +147,7 @@ public class SharePicActivity extends BaseActivityViewModel<ActivitySharePicBind
         }
 
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        File imageFile = new File(path, fileName == null ? "Comprovante.jpeg" : fileName);
+        File imageFile = new File(path, fileName == null ? "puc_aberta.jpeg" : fileName);
         FileOutputStream fileOutPutStream = null;
         try {
             fileOutPutStream = new FileOutputStream(imageFile);
