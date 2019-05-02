@@ -14,28 +14,44 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v4.content.FileProvider;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import pucaberta.pucminas.com.R;
 import pucaberta.pucminas.com.base.BaseActivityViewModel;
 import pucaberta.pucminas.com.databinding.ActivitySharePicBinding;
+import pucaberta.pucminas.com.model.ImageModel;
+import pucaberta.pucminas.com.ui.SlidingImage_Adapter;
 import pucaberta.pucminas.com.viewmodel.HomeViewModel;
 
 public class SharePicActivity extends BaseActivityViewModel<ActivitySharePicBinding, HomeViewModel> {
 
     private static final String BYTE_ARRAY = "BYTE_ARRAY";
+
+    private static ViewPager mPager;
+    private static int currentPage = 0;
+    private static int NUM_PAGES = 0;
+    private ArrayList<ImageModel> imageModelArrayList;
+    private Bitmap currrentBitmap;
+
+    private int[] myImageList = new int[]{R.drawable.slide01_app_pucaberta, R.drawable.slide02_app_pucaberta,
+            R.drawable.slide03_app_pucaberta, R.drawable.slide04_app_pucaberta};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +62,70 @@ public class SharePicActivity extends BaseActivityViewModel<ActivitySharePicBind
         if (extras != null) {
             byte[] byteArray = extras.getByteArray(BYTE_ARRAY);
             Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+            currrentBitmap = bmp;
             mBinding.image.setImageBitmap(bmp);
         }
 
         mBinding.share.setOnClickListener(view -> {
             checkWritePermissionAndShare(mBinding.content, "puc_aberta.jpeg");
         });
+
+        imageModelArrayList = new ArrayList<>();
+        imageModelArrayList = populateList();
+
+        init();
+    }
+
+    private ArrayList<ImageModel> populateList() {
+
+        ArrayList<ImageModel> list = new ArrayList<>();
+
+        for (int i = 0; i < myImageList.length; i++) {
+            ImageModel imageModel = new ImageModel();
+            imageModel.setImage_drawable(myImageList[i]);
+            list.add(imageModel);
+        }
+
+        return list;
+    }
+
+    private void init() {
+
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager.setAdapter(new SlidingImage_Adapter(SharePicActivity.this, imageModelArrayList));
+
+        CirclePageIndicator indicator = (CirclePageIndicator)
+                findViewById(R.id.indicator);
+
+        indicator.setViewPager(mPager);
+
+        final float density = getResources().getDisplayMetrics().density;
+
+        indicator.setRadius(5 * density);
+
+        NUM_PAGES = imageModelArrayList.size();
+
+
+        // Pager listener over indicator
+        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+
+            }
+
+            @Override
+            public void onPageScrolled(int pos, float arg1, int arg2) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int pos) {
+
+            }
+        });
+
     }
 
     public void checkWritePermissionAndShare(View view,
@@ -93,26 +167,60 @@ public class SharePicActivity extends BaseActivityViewModel<ActivitySharePicBind
 
             context.startActivity(Intent.createChooser(intent, "Compartilhar"));
         }
+
     }
 
     private String screenShot(View view, String fileName) {
 
 
-        Bitmap bitmap = loadLargeBitmapFromView(view);
-//        if (linearLayout.getDrawingCache() == null) {
-//            bitmap = loadLargeBitmapFromView(linearLayout);
-//        } else {
-//            bitmap = Bitmap.createBitmap(
-//                    linearLayout.getDrawingCache());
-//        }
-//        linearLayout.setDrawingCacheEnabled(false);
-//
-//        linearLayout.removeView(view);
-//        if (parent != null) {
-//            for (View v : children) {
-//                parent.addView(v);
-//            }
-//        }
+        Context context = view.getContext();
+        LinearLayout linearLayout = new LinearLayout(context);
+        linearLayout.setBackgroundColor(Color.WHITE);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.setLayoutParams(new LinearLayout
+                .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+
+        ImageView imageView = new ImageView(context);
+        imageView.setLayoutParams(new LinearLayout
+                .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        ArrayList<View> children = new ArrayList<>();
+
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            for (int i = 0; i < parent.getChildCount(); i++) {
+                children.add(parent.getChildAt(i));
+            }
+            parent.removeAllViews();
+        }
+
+        linearLayout.addView(view);
+
+        linearLayout.setDrawingCacheEnabled(true);
+        linearLayout.measure(View.MeasureSpec.makeMeasureSpec(
+                0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(
+                        0, View.MeasureSpec.UNSPECIFIED));
+        linearLayout.layout(0, 0, linearLayout.getMeasuredWidth(),
+                linearLayout.getMeasuredHeight());
+        linearLayout.buildDrawingCache(true);
+        Bitmap bitmap;
+        if (linearLayout.getDrawingCache() == null) {
+            bitmap = loadLargeBitmapFromView(linearLayout);
+        } else {
+            bitmap = Bitmap.createBitmap(
+                    linearLayout.getDrawingCache());
+        }
+        linearLayout.setDrawingCacheEnabled(false);
+
+        linearLayout.removeView(view);
+        if (parent != null) {
+            for (View v : children) {
+                parent.addView(v);
+            }
+        }
 
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File imageFile = new File(path, fileName == null ? "Comprovante.jpeg" : fileName);
@@ -143,11 +251,10 @@ public class SharePicActivity extends BaseActivityViewModel<ActivitySharePicBind
     }
 
     private Bitmap loadLargeBitmapFromView(View v) {
-        Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(b);
+        Bitmap bitmap = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
         v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
-        v.draw(c);
-        mBinding.image.setImageBitmap(b);
-        return b;
+        v.draw(canvas);
+        return bitmap;
     }
 }

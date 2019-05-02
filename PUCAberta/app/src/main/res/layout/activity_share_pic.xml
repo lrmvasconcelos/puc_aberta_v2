@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -9,22 +9,41 @@
         <RelativeLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/share"
-            android:layout_margin="16dp">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" />
 
-            <ImageView
-                android:id="@+id/imageView"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/slide01_app_pucaberta" />
+                android:layout_alignParentTop="true" />
+
+            <!--<ImageView-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:src="@drawable/slide01_app_pucaberta" />-->
 
         </RelativeLayout>
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/indicator"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/share"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            android:gravity="bottom"
+            app:centered="true"
+            app:fillColor="@color/colorPrimaryDark"
+            app:pageColor="#fff"
+            app:snap="false" />
 
         <Button
             android:id="@+id/share"

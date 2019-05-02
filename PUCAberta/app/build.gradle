@@ -116,4 +116,7 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-messaging:17.4.0'
+
+    compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+
 }
