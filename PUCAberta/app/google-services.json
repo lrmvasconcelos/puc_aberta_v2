@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "63775687112",
+    "firebase_url": "https://puc-aberta-1523325914560.firebaseio.com",
+    "project_id": "puc-aberta-1523325914560",
+    "storage_bucket": "puc-aberta-1523325914560.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63775687112:android:38a12022b5ec3173",
+        "android_client_info": {
+          "package_name": "pucaberta.pucminas.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63775687112-0016tevomcbettki5kvnrnn3t6tbgn1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqpOKbfLhA6GHS3MlIfguUP2tnSS-LnEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63775687112-0016tevomcbettki5kvnrnn3t6tbgn1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

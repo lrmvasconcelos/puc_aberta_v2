@@ -95,59 +95,27 @@ public class SharePicActivity extends BaseActivityViewModel<ActivitySharePicBind
         }
     }
 
-    private static String screenShot(View view, String fileName) {
+    private String screenShot(View view, String fileName) {
 
-        Context context = view.getContext();
-        LinearLayout linearLayout = new LinearLayout(context);
-        linearLayout.setBackgroundColor(Color.WHITE);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setLayoutParams(new LinearLayout
-                .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT));
 
-        ImageView imageView = new ImageView(context);
-        imageView.setLayoutParams(new LinearLayout
-                .LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-
-        ArrayList<View> children = new ArrayList<>();
-
-        ViewGroup parent = (ViewGroup) view.getParent();
-        if (parent != null) {
-            for (int i = 0; i < parent.getChildCount(); i++) {
-                children.add(parent.getChildAt(i));
-            }
-            parent.removeAllViews();
-        }
-
-        linearLayout.addView(view);
-
-        linearLayout.setDrawingCacheEnabled(true);
-        linearLayout.measure(View.MeasureSpec.makeMeasureSpec(
-                0, View.MeasureSpec.UNSPECIFIED),
-                View.MeasureSpec.makeMeasureSpec(
-                        0, View.MeasureSpec.UNSPECIFIED));
-        linearLayout.layout(0, 0, linearLayout.getMeasuredWidth(),
-                linearLayout.getMeasuredHeight());
-        linearLayout.buildDrawingCache(true);
-        Bitmap bitmap;
-        if (linearLayout.getDrawingCache() == null) {
-            bitmap = loadLargeBitmapFromView(linearLayout);
-        } else {
-            bitmap = Bitmap.createBitmap(
-                    linearLayout.getDrawingCache());
-        }
-        linearLayout.setDrawingCacheEnabled(false);
-
-        linearLayout.removeView(view);
-        if (parent != null) {
-            for (View v : children) {
-                parent.addView(v);
-            }
-        }
+        Bitmap bitmap = loadLargeBitmapFromView(view);
+//        if (linearLayout.getDrawingCache() == null) {
+//            bitmap = loadLargeBitmapFromView(linearLayout);
+//        } else {
+//            bitmap = Bitmap.createBitmap(
+//                    linearLayout.getDrawingCache());
+//        }
+//        linearLayout.setDrawingCacheEnabled(false);
+//
+//        linearLayout.removeView(view);
+//        if (parent != null) {
+//            for (View v : children) {
+//                parent.addView(v);
+//            }
+//        }
 
         File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        File imageFile = new File(path, fileName == null ? "puc_aberta.jpeg" : fileName);
+        File imageFile = new File(path, fileName == null ? "Comprovante.jpeg" : fileName);
         FileOutputStream fileOutPutStream = null;
         try {
             fileOutPutStream = new FileOutputStream(imageFile);
@@ -174,11 +142,12 @@ public class SharePicActivity extends BaseActivityViewModel<ActivitySharePicBind
         }
     }
 
-    private static Bitmap loadLargeBitmapFromView(View v) {
+    private Bitmap loadLargeBitmapFromView(View v) {
         Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(b);
         v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
         v.draw(c);
+        mBinding.image.setImageBitmap(b);
         return b;
     }
 }
