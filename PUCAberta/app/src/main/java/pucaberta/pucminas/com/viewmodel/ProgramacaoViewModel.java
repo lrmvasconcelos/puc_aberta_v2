@@ -50,7 +50,7 @@ public class ProgramacaoViewModel extends BaseViewModel {
                 "ICBS - 13h30 às 15h30", R.drawable.grupo_d));
 
         mList.add(new CardContent("GRUPO E - AUDITÓRIO MULTIUSO - PRÉDIO 43 –\n" +
-                "ICH - 13h30 às 15h30", R.drawable.grupo_e));
+                "ICH - 13h30 às 15h30", R.drawable.grupo_j));
 
         mList.add(new CardContent("GRUPO F - TEATRO - PRÉDIO 30 –\n" +
                 "ICBS - 16h às 18h", R.drawable.grupo_f));
